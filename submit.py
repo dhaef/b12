@@ -42,13 +42,10 @@ def run():
         secret_key.encode("utf-8"), body.encode("utf-8"), digestmod=hashlib.sha256
     ).hexdigest()
 
-    print("Sig: " + signature)
-    print("Run Link: " + run_link)
-
     url = "https://b12.io/apply/submission"
     headers = {
         "Content-Type": "application/json",
-        "X-Signature-256": signature,
+        "X-Signature-256": f"sha256={signature}",
     }
 
     response = requests.post(url, data=body, headers=headers)
