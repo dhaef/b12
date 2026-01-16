@@ -42,6 +42,9 @@ def run():
         secret_key.encode("utf-8"), body.encode("utf-8"), digestmod=hashlib.sha256
     ).hexdigest()
 
+    print("Sig: " + signature)
+    print("Run Link: " + run_link)
+
     url = "https://b12.io/apply/submission"
     headers = {
         "Content-Type": "application/json",
